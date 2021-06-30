@@ -2,11 +2,11 @@
 
 {{- $pageResource := .Page.Resources.GetMatch "bib.json" -}}
 {{- if $pageResource }}
-{{- $constructedBibResource := printf "content/%s%s" .Page.File.Dir $pageResource.Name }}
-{{- $bibfilePath := $constructedBibResource }}
-{{- $bibentries = getJSON $bibfilePath -}}
+  {{- $constructedBibResource := printf "content/%s%s" .Page.File.Dir $pageResource.Name }}
+  {{- $bibfilePath := $constructedBibResource }}
+  {{- $bibentries = getJSON $bibfilePath -}}
 {{- else -}}
-{{- errorf "No JSON file was found: %s" .Position -}}
+  {{- errorf "No JSON file was found: %s" .Position -}}
 {{- end -}}
 
 {{- return $bibentries -}}

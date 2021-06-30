@@ -2,11 +2,11 @@
 
 {{- $bibentryId := "" -}}
 {{- if index . "bibentryId" -}}
-{{- $bibentryId = index . "bibentryId" -}}
+  {{- $bibentryId = index . "bibentryId" -}}
 {{- else if $context.Get 0 -}}
-{{- $bibentryId = $context.Get 0 -}}
+  {{- $bibentryId = $context.Get 0 -}}
 {{- else -}}
-{{- errorf "No bibliographic entry ID was provided: %s" .Position -}}
+  {{- errorf "No bibliographic entry ID was provided: %s" .Position -}}
 {{- end -}}
 
 {{- $stylePath := "styles/ieee/main.html" -}}
