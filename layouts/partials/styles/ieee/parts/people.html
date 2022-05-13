@@ -20,7 +20,11 @@
 {{- else -}}
 
 {{- with $person.given -}}
-  {{- $displayedName = printf "%s%s. " $displayedName (substr . 0 1) -}}
+  {{- $initials := replaceRE "([A-Z])(\\.| |[A-z]+)" "$1" . -}}
+  {{- $initials = replace $initials " " "" -}}
+  {{- $initials = replace $initials "." "" -}}
+  {{- $initials = replaceRE "([A-Z])" "$1. " $initials -}}
+  {{- $displayedName = $initials -}}
 {{- end -}}
 
 {{- with $person.secondInitial -}}
